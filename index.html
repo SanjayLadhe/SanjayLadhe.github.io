@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Expense Tracker</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -13,11 +13,24 @@
             box-sizing: border-box;
         }
 
+        /* Prevent horizontal scrolling */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100%;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            min-height: -webkit-fill-available;
             color: #333;
+        }
+
+        /* CSS Variables for mobile viewport */
+        :root {
+            --vh: 1vh;
         }
 
         /* Login Screen Styles */
@@ -26,6 +39,7 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            min-height: calc(var(--vh, 1vh) * 100);
             padding: 20px;
         }
 
@@ -124,6 +138,8 @@
             justify-content: space-between;
             align-items: center;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .user-welcome {
@@ -152,6 +168,7 @@
             margin: 0 auto;
             padding: 20px;
             display: none;
+            overflow: hidden;
         }
 
         .container.show {
@@ -167,6 +184,7 @@
             text-align: center;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             animation: slideDown 0.6s ease-out;
+            max-width: 100%;
         }
 
         @keyframes slideDown {
@@ -179,7 +197,7 @@
             background: linear-gradient(45deg, #667eea, #764ba2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 5px;
+            margin-bottom: 6px;
         }
 
         .header p {
@@ -195,24 +213,121 @@
             margin-bottom: 25px;
             text-align: center;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            max-width: 100%;
         }
 
-        .month-nav select {
-            padding: 12px 25px;
-            border: none;
-            border-radius: 10px;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
+        .month-selector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .month-selector label {
+            color: #333;
+            font-weight: 600;
             font-size: 1.1rem;
+        }
+
+        .date-selectors {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .month-select, .year-select {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            background: white;
+            color: #333;
+            font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
             transition: all 0.3s ease;
+            min-width: 120px;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            background-image: url('data:image/svg+xml;utf8,<svg fill="%23333" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            background-size: 16px;
         }
 
-        .month-nav select:hover {
+        .month-select:focus, .year-select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .month-select:hover, .year-select:hover {
+            border-color: #667eea;
+            transform: translateY(-1px);
+        }
+
+        .current-month-display {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .month-navigation {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: linear-gradient(45deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(40, 167, 69, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .nav-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+            box-shadow: 0 8px 25px rgba(40, 167, 69, 0.4);
+        }
+
+        .nav-btn.prev {
+            background: linear-gradient(45deg, #6c757d, #5a6268);
+            box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        .nav-btn.prev:hover {
+            box-shadow: 0 8px 25px rgba(108, 117, 125, 0.4);
+        }
+
+        .nav-btn.next {
+            background: linear-gradient(45deg, #007bff, #0056b3);
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+        }
+
+        .nav-btn.next:hover {
+            box-shadow: 0 8px 25px rgba(0, 123, 255, 0.4);
         }
 
         .dashboard-grid {
@@ -232,6 +347,8 @@
             transition: all 0.3s ease;
             border-left: 5px solid;
             animation: fadeInUp 0.5s ease-out;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         @keyframes fadeInUp {
@@ -263,6 +380,7 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             margin-bottom: 10px;
+            word-wrap: break-word;
         }
 
         .stat-card .amount {
@@ -270,6 +388,7 @@
             font-weight: bold;
             color: #333;
             transition: all 0.3s ease;
+            word-break: break-all;
         }
 
         .main-content {
@@ -285,11 +404,13 @@
             border-radius: 20px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             overflow: hidden;
+            max-width: 100%;
         }
 
         .tabs {
             display: flex;
             background: #f8f9fa;
+            flex-wrap: wrap;
         }
 
         .tab {
@@ -306,6 +427,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            min-width: 120px;
         }
 
         .tab.active {
@@ -351,6 +473,7 @@
             -webkit-appearance: none;
             -moz-appearance: none;
             background: white;
+            box-sizing: border-box;
         }
 
         .form-group select {
@@ -390,6 +513,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            box-sizing: border-box;
         }
 
         .btn-primary {
@@ -409,6 +533,8 @@
             border-radius: 20px;
             padding: 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .charts-container h3 {
@@ -431,6 +557,8 @@
             padding: 30px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             margin-top: 25px;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .expense-item {
@@ -444,6 +572,8 @@
             border-left: 4px solid #667eea;
             transition: all 0.3s ease;
             animation: slideInRight 0.4s ease-out;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
         }
 
         @keyframes slideInRight {
@@ -465,12 +595,14 @@
 
         .expense-details {
             flex: 1;
+            margin-right: 15px;
         }
 
         .expense-desc {
             font-weight: 600;
             color: #333;
             margin-bottom: 5px;
+            word-wrap: break-word;
         }
 
         .expense-category {
@@ -502,6 +634,7 @@
         .expense-actions {
             display: flex;
             gap: 10px;
+            flex-wrap: wrap;
         }
 
         .btn-small {
@@ -533,6 +666,8 @@
             transform: translateX(400px);
             transition: transform 0.3s ease;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            max-width: calc(100vw - 40px);
+            word-wrap: break-word;
         }
 
         .notification.show {
@@ -555,6 +690,8 @@
             margin-top: 25px;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             text-align: center;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .flow-step {
@@ -590,6 +727,8 @@
             text-align: center;
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             animation: fadeInUp 0.8s ease-out;
+            max-width: 100%;
+            overflow: hidden;
         }
 
         .footer-content {
@@ -672,7 +811,7 @@
         /* Enhanced Mobile Responsiveness */
         @media (max-width: 1200px) {
             .main-content {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
             }
             
             .dashboard-grid {
@@ -682,142 +821,202 @@
 
         @media (max-width: 768px) {
             .container {
-                padding: 10px;
+                padding: 10px !important;
+                margin: 0 !important;
             }
             
             .login-box {
                 padding: 30px 20px;
+                margin: 10px;
             }
             
             .header h1 {
-                font-size: 2.2rem;
+                font-size: 2.2rem !important;
             }
             
             .header p {
-                font-size: 1rem;
+                font-size: 1rem !important;
             }
             
             .dashboard-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr !important;
                 gap: 15px;
             }
             
             .stat-card {
-                padding: 20px;
+                padding: 20px !important;
+                margin-bottom: 10px;
             }
             
             .stat-card .amount {
-                font-size: 1.6rem;
+                font-size: 1.6rem !important;
             }
             
             .tabs {
-                flex-direction: column;
+                flex-direction: column !important;
             }
             
             .tab {
-                padding: 15px;
-                font-size: 0.9rem;
+                padding: 15px !important;
+                font-size: 0.9rem !important;
+                width: 100% !important;
+                text-align: center;
             }
             
             .tab-content {
-                padding: 20px;
+                padding: 20px !important;
             }
             
             .charts-container {
-                padding: 20px;
+                padding: 20px !important;
             }
             
             .chart-wrapper {
-                height: 250px;
+                height: 250px !important;
             }
             
             .expense-item {
-                flex-direction: column;
-                align-items: flex-start;
+                flex-direction: column !important;
+                align-items: flex-start !important;
                 gap: 15px;
-                padding: 15px;
+                padding: 15px !important;
             }
             
             .expense-actions {
-                width: 100%;
+                width: 100% !important;
                 justify-content: flex-end;
             }
             
             .flow-step {
-                display: block;
-                margin: 8px auto;
-                padding: 10px 15px;
-                font-size: 0.9rem;
+                display: block !important;
+                margin: 8px auto !important;
+                padding: 10px 15px !important;
+                font-size: 0.9rem !important;
             }
             
             .flow-arrow {
-                display: block;
+                display: block !important;
                 text-align: center;
-                margin: 5px 0;
+                margin: 5px 0 !important;
                 transform: rotate(90deg);
-                font-size: 1.2rem;
+                font-size: 1.2rem !important;
             }
             
             .footer {
-                padding: 20px;
+                padding: 20px !important;
             }
             
             .footer-main {
-                font-size: 1.1rem;
+                font-size: 1.1rem !important;
                 text-align: center;
             }
             
             .developer-info {
-                flex-direction: column;
+                flex-direction: column !important;
                 text-align: center;
-                padding: 15px 20px;
+                padding: 15px 20px !important;
             }
             
             .developer-details {
-                text-align: center;
+                text-align: center !important;
             }
             
             .user-info {
-                flex-direction: column;
+                flex-direction: column !important;
                 gap: 10px;
                 text-align: center;
             }
             
             .notification {
-                top: 10px;
-                right: 10px;
-                left: 10px;
-                transform: translateY(-100px);
-                font-size: 0.9rem;
-                padding: 12px 15px;
+                top: 10px !important;
+                right: 10px !important;
+                left: 10px !important;
+                transform: translateY(-100px) !important;
+                font-size: 0.9rem !important;
+                padding: 12px 15px !important;
             }
             
             .notification.show {
-                transform: translateY(0);
+                transform: translateY(0) !important;
+            }
+
+            .main-content {
+                grid-template-columns: 1fr !important;
+                gap: 15px;
+            }
+
+            /* Fix for input and select widths */
+            input, select, .btn {
+                width: 100% !important;
+                box-sizing: border-box !important;
+            }
+
+            .expense-details {
+                margin-right: 0 !important;
+                margin-bottom: 10px;
+            }
+
+            .date-selectors {
+                flex-direction: column !important;
+                gap: 10px;
+            }
+
+            .month-select, .year-select {
+                min-width: 100% !important;
+            }
+
+            .month-navigation {
+                flex-direction: column !important;
+                gap: 10px;
             }
         }
 
         @media (max-width: 480px) {
+            .container {
+                padding: 5px !important;
+                margin: 0 !important;
+            }
+
             .header h1 {
-                font-size: 1.8rem;
+                font-size: 1.8rem !important;
             }
             
             .stat-card i {
-                font-size: 2rem;
+                font-size: 2rem !important;
             }
             
             .stat-card .amount {
-                font-size: 1.4rem;
+                font-size: 1.4rem !important;
             }
             
             .btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
+                padding: 12px 20px !important;
+                font-size: 0.9rem !important;
             }
             
             .form-group input, .form-group select {
-                padding: 12px;
-                font-size: 0.9rem;
+                padding: 12px !important;
+                font-size: 0.9rem !important;
+            }
+
+            .login-box {
+                padding: 20px 15px !important;
+            }
+
+            .tab-content {
+                padding: 15px !important;
+            }
+
+            .charts-container {
+                padding: 15px !important;
+            }
+
+            .expenses-list {
+                padding: 15px !important;
+            }
+
+            .footer {
+                padding: 15px !important;
             }
         }
     </style>
@@ -871,8 +1070,46 @@
         </div>
 
         <div class="month-nav">
-            <label for="monthSel"><i class="fas fa-calendar-alt"></i> Select Month:</label>
-            <select id="monthSel"></select>
+            <div class="month-selector">
+                <label><i class="fas fa-calendar-alt"></i> Select Month & Year:</label>
+            </div>
+            
+            <div class="date-selectors">
+                <select id="monthSelect" class="month-select">
+                    <option value="January">January</option>
+                    <option value="February">February</option>
+                    <option value="March">March</option>
+                    <option value="April">April</option>
+                    <option value="May">May</option>
+                    <option value="June">June</option>
+                    <option value="July">July</option>
+                    <option value="August">August</option>
+                    <option value="September">September</option>
+                    <option value="October">October</option>
+                    <option value="November">November</option>
+                    <option value="December">December</option>
+                </select>
+                
+                <select id="yearSelect" class="year-select">
+                    <!-- Years will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="current-month-display" id="currentMonthDisplay">
+                <!-- Current selected month will be shown here -->
+            </div>
+
+            <div class="month-navigation">
+                <button class="nav-btn prev" onclick="navigateMonth(-1)">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <button class="nav-btn" onclick="goToCurrentMonth()">
+                    <i class="fas fa-calendar-day"></i> Today
+                </button>
+                <button class="nav-btn next" onclick="navigateMonth(1)">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
         </div>
 
         <div class="dashboard-grid">
@@ -982,7 +1219,6 @@
             <div id="expensesList"></div>
         </div>
 
- 
 
         <!-- Enhanced Footer -->
         <footer class="footer">
@@ -993,18 +1229,101 @@
                     <span>by</span>
                     <span class="developer-name">Karan Pardeshi</span>
                 </div>
-            
+               
             </div>
         </footer>
     </div>
 
     <script>
+        // IndexedDB Database Class
+        class ExpenseDB {
+            constructor() {
+                this.dbName = 'ExpenseTrackerDB';
+                this.version = 1;
+                this.db = null;
+            }
+            
+            async init() {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open(this.dbName, this.version);
+                    
+                    request.onerror = () => reject(request.error);
+                    request.onsuccess = () => {
+                        this.db = request.result;
+                        resolve(this.db);
+                    };
+                    
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        if (!db.objectStoreNames.contains('expenses')) {
+                            const expenseStore = db.createObjectStore('expenses', { keyPath: 'id' });
+                            expenseStore.createIndex('username', 'username', { unique: false });
+                        }
+                        if (!db.objectStoreNames.contains('users')) {
+                            db.createObjectStore('users', { keyPath: 'username' });
+                        }
+                    };
+                });
+            }
+            
+            async saveUserData(username, data) {
+                const transaction = this.db.transaction(['expenses'], 'readwrite');
+                const store = transaction.objectStore('expenses');
+                const dataWithId = { id: username, username, data, timestamp: Date.now() };
+                return store.put(dataWithId);
+            }
+            
+            async getUserData(username) {
+                const transaction = this.db.transaction(['expenses'], 'readonly');
+                const store = transaction.objectStore('expenses');
+                const request = store.get(username);
+                return new Promise((resolve) => {
+                    request.onsuccess = () => resolve(request.result?.data || {});
+                    request.onerror = () => resolve({});
+                });
+            }
+
+            async saveUser(username, userData) {
+                const transaction = this.db.transaction(['users'], 'readwrite');
+                const store = transaction.objectStore('users');
+                return store.put({ username, ...userData });
+            }
+
+            async getUser(username) {
+                const transaction = this.db.transaction(['users'], 'readonly');
+                const store = transaction.objectStore('users');
+                const request = store.get(username);
+                return new Promise((resolve) => {
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => resolve(null);
+                });
+            }
+        }
+
+        // Initialize database
+        const expenseDB = new ExpenseDB();
+        let dbInitialized = false;
+
+        // Mobile viewport fix
+        function setMobileViewport() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+
+        window.addEventListener('resize', setMobileViewport);
+        window.addEventListener('orientationchange', setMobileViewport);
+        setMobileViewport();
+
         const months = [
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
-        const mSel = document.getElementById('monthSel');
-        let now = new Date(), curMonth = months[now.getMonth()] + '-' + now.getFullYear();
+        
+        let now = new Date();
+        let currentSelectedMonth = months[now.getMonth()];
+        let currentSelectedYear = now.getFullYear();
+        let curMonth = `${currentSelectedMonth}-${currentSelectedYear}`;
+        
         let pieChart, barChart, doughnutChart;
         let currentUser = null;
         let isLoginMode = true;
@@ -1023,6 +1342,106 @@
             "Others": ["Charity", "Gifts", "Miscellaneous", "Emergency", "Repairs", "Services"]
         };
 
+        // Initialize month and year selectors
+        function initializeDateSelectors() {
+            const monthSelect = document.getElementById('monthSelect');
+            const yearSelect = document.getElementById('yearSelect');
+            
+            // Populate years (5 years ago to 5 years ahead)
+            const currentYear = new Date().getFullYear();
+            yearSelect.innerHTML = '';
+            for (let year = currentYear - 5; year <= currentYear + 5; year++) {
+                const option = document.createElement('option');
+                option.value = year;
+                option.textContent = year;
+                yearSelect.appendChild(option);
+            }
+            
+            // Set current selections
+            monthSelect.value = currentSelectedMonth;
+            yearSelect.value = currentSelectedYear;
+            
+            // Update display
+            updateCurrentMonthDisplay();
+            
+            // Add event listeners
+            monthSelect.addEventListener('change', onMonthYearChange);
+            yearSelect.addEventListener('change', onMonthYearChange);
+        }
+
+        function onMonthYearChange() {
+            const monthSelect = document.getElementById('monthSelect');
+            const yearSelect = document.getElementById('yearSelect');
+            
+            currentSelectedMonth = monthSelect.value;
+            currentSelectedYear = parseInt(yearSelect.value);
+            curMonth = `${currentSelectedMonth}-${currentSelectedYear}`;
+            
+            updateCurrentMonthDisplay();
+            updateDisplay();
+            showNotification(`Switched to ${currentSelectedMonth} ${currentSelectedYear}`);
+        }
+
+        function updateCurrentMonthDisplay() {
+            const display = document.getElementById('currentMonthDisplay');
+            display.textContent = `${currentSelectedMonth} ${currentSelectedYear}`;
+        }
+
+        function navigateMonth(direction) {
+            let monthIndex = months.indexOf(currentSelectedMonth);
+            let year = currentSelectedYear;
+            
+            monthIndex += direction;
+            
+            if (monthIndex < 0) {
+                monthIndex = 11;
+                year--;
+            } else if (monthIndex > 11) {
+                monthIndex = 0;
+                year++;
+            }
+            
+            currentSelectedMonth = months[monthIndex];
+            currentSelectedYear = year;
+            curMonth = `${currentSelectedMonth}-${currentSelectedYear}`;
+            
+            // Update selectors
+            document.getElementById('monthSelect').value = currentSelectedMonth;
+            document.getElementById('yearSelect').value = currentSelectedYear;
+            
+            updateCurrentMonthDisplay();
+            updateDisplay();
+            showNotification(`Switched to ${currentSelectedMonth} ${currentSelectedYear}`);
+        }
+
+        function goToCurrentMonth() {
+            const now = new Date();
+            currentSelectedMonth = months[now.getMonth()];
+            currentSelectedYear = now.getFullYear();
+            curMonth = `${currentSelectedMonth}-${currentSelectedYear}`;
+            
+            // Update selectors
+            document.getElementById('monthSelect').value = currentSelectedMonth;
+            document.getElementById('yearSelect').value = currentSelectedYear;
+            
+            updateCurrentMonthDisplay();
+            updateDisplay();
+            showNotification(`Switched to current month: ${currentSelectedMonth} ${currentSelectedYear}`);
+        }
+
+        async function initDB() {
+            if (!dbInitialized) {
+                try {
+                    await expenseDB.init();
+                    dbInitialized = true;
+                } catch (error) {
+                    console.error('Database initialization failed:', error);
+                    // Fallback to localStorage
+                    dbInitialized = false;
+                }
+            }
+        }
+
         function switchLoginTab(mode) {
             isLoginMode = mode === 'login';
             document.querySelectorAll('.login-tab').forEach(tab => tab.classList.remove('active'));
@@ -1040,7 +1459,7 @@
             }
         }
 
-        function handleLogin(event) {
+        async function handleLogin(event) {
             event.preventDefault();
             const username = document.getElementById('username').value.trim();
             const password = document.getElementById('password').value.trim();
@@ -1051,34 +1470,66 @@
                 return;
             }
 
+            await initDB();
+
             if (isLoginMode) {
-                const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
-                if (users[username] && users[username].password === password) {
-                    currentUser = username;
-                    localStorage.setItem('currentUser', username);
-                    showLogin();
-                    showNotification(`Welcome back, ${username}!`);
+                // Login Logic
+                if (dbInitialized) {
+                    const user = await expenseDB.getUser(username);
+                    if (user && user.password === password) {
+                        currentUser = username;
+                        localStorage.setItem('currentUser', username);
+                        showLogin();
+                        showNotification(`Welcome back, ${username}!`);
+                    } else {
+                        showNotification('Invalid username or password!', 'error');
+                    }
                 } else {
-                    showNotification('Invalid username or password!', 'error');
+                    // Fallback to localStorage
+                    const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
+                    if (users[username] && users[username].password === password) {
+                        currentUser = username;
+                        localStorage.setItem('currentUser', username);
+                        showLogin();
+                        showNotification(`Welcome back, ${username}!`);
+                    } else {
+                        showNotification('Invalid username or password!', 'error');
+                    }
                 }
             } else {
+                // Register Logic
                 if (!email) {
                     showNotification('Email is required for registration!', 'error');
                     return;
                 }
                 
-                const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
-                if (users[username]) {
-                    showNotification('Username already exists!', 'error');
-                    return;
+                if (dbInitialized) {
+                    const existingUser = await expenseDB.getUser(username);
+                    if (existingUser) {
+                        showNotification('Username already exists!', 'error');
+                        return;
+                    }
+                    
+                    await expenseDB.saveUser(username, { password, email, createdAt: Date.now() });
+                    currentUser = username;
+                    localStorage.setItem('currentUser', username);
+                    showLogin();
+                    showNotification(`Account created successfully! Welcome, ${username}!`);
+                } else {
+                    // Fallback to localStorage
+                    const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
+                    if (users[username]) {
+                        showNotification('Username already exists!', 'error');
+                        return;
+                    }
+                    
+                    users[username] = { password, email, createdAt: Date.now() };
+                    localStorage.setItem('expenseUsers', JSON.stringify(users));
+                    currentUser = username;
+                    localStorage.setItem('currentUser', username);
+                    showLogin();
+                    showNotification(`Account created successfully! Welcome, ${username}!`);
                 }
-                
-                users[username] = { password, email, createdAt: Date.now() };
-                localStorage.setItem('expenseUsers', JSON.stringify(users));
-                currentUser = username;
-                localStorage.setItem('currentUser', username);
-                showLogin();
-                showNotification(`Account created successfully! Welcome, ${username}!`);
             }
         }
 
@@ -1086,6 +1537,7 @@
             document.getElementById('loginScreen').style.display = 'none';
             document.getElementById('mainApp').classList.add('show');
             document.getElementById('currentUser').textContent = currentUser;
+            initializeDateSelectors();
             updateDisplay();
         }
 
@@ -1098,9 +1550,10 @@
             showNotification('Logged out successfully!');
         }
 
-        function checkAutoLogin() {
+        async function checkAutoLogin() {
             const savedUser = localStorage.getItem('currentUser');
             if (savedUser) {
+                await initDB();
                 currentUser = savedUser;
                 showLogin();
             }
@@ -1124,11 +1577,13 @@
             }
         }
 
-        function getUserDataKey() {
-            return `expData_${currentUser}`;
-        }
-
         function showNotification(message, type = 'success') {
+            // Remove existing notification
+            const existingNotification = document.querySelector('.notification');
+            if (existingNotification) {
+                existingNotification.remove();
+            }
+
             const notification = document.createElement('div');
             notification.className = `notification ${type}`;
             notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${message}`;
@@ -1137,31 +1592,43 @@
             setTimeout(() => notification.classList.add('show'), 100);
             setTimeout(() => {
                 notification.classList.remove('show');
-                setTimeout(() => document.body.removeChild(notification), 300);
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.parentNode.removeChild(notification);
+                    }
+                }, 300);
             }, 3000);
         }
 
-        function getAllData() {
-            return JSON.parse(localStorage.getItem(getUserDataKey()) || '{}');
+        async function getAllData() {
+            if (dbInitialized) {
+                return await expenseDB.getUserData(currentUser);
+            } else {
+                return JSON.parse(localStorage.getItem(`expData_${currentUser}`) || '{}');
+            }
         }
 
-        function saveData(obj) {
-            localStorage.setItem(getUserDataKey(), JSON.stringify(obj));
+        async function saveData(obj) {
+            if (dbInitialized) {
+                await expenseDB.saveUserData(currentUser, obj);
+            } else {
+                localStorage.setItem(`expData_${currentUser}`, JSON.stringify(obj));
+            }
         }
 
-        function getCurData() {
-            let all = getAllData();
+        async function getCurData() {
+            let all = await getAllData();
             return all[curMonth] || { credits: [], expenses: [] };
         }
 
-        function setCurData(data) {
-            let all = getAllData();
+        async function setCurData(data) {
+            let all = await getAllData();
             all[curMonth] = data;
-            saveData(all);
+            await saveData(all);
         }
 
-        function getTotalBankBalance() {
-            let all = getAllData();
+        async function getTotalBankBalance() {
+            let all = await getAllData();
             let totalBalance = 0;
             
             Object.keys(all).forEach(month => {
@@ -1172,25 +1639,6 @@
             });
             
             return totalBalance;
-        }
-
-        function listMonths() {
-            let all = getAllData();
-            let ms = Object.keys(all);
-            if (!ms.length) ms = [curMonth];
-            mSel.innerHTML = '';
-            ms.forEach(m => {
-                let opt = document.createElement('option');
-                opt.value = m;
-                opt.textContent = m;
-                mSel.appendChild(opt);
-            });
-            mSel.value = curMonth;
-        }
-
-        function switchMonth() {
-            curMonth = mSel.value;
-            updateDisplay();
         }
 
         function switchTab(tabName) {
@@ -1205,22 +1653,22 @@
             }
         }
 
-        function addCredit() {
+        async function addCredit() {
             let v = parseFloat(document.getElementById('creditAmt').value);
             if (!(v > 0)) {
                 showNotification('Please enter a valid salary amount!', 'error');
                 return;
             }
-            let dat = getCurData();
+            let dat = await getCurData();
             dat.credits.push({ amount: v, at: Date.now() });
-            setCurData(dat);
+            await setCurData(dat);
             
             document.getElementById('creditAmt').value = '';
             updateDisplay();
             showNotification(`₹${v} salary credited successfully!`);
         }
 
-        function addExpense() {
+        async function addExpense() {
             let desc = document.getElementById('expenseDesc').value.trim();
             let category = document.getElementById('expenseCategory').value;
             let subcategory = document.getElementById('expenseSubcategory').value;
@@ -1231,7 +1679,7 @@
                 return;
             }
             
-            let dat = getCurData();
+            let dat = await getCurData();
             dat.expenses.push({ 
                 desc, 
                 category, 
@@ -1240,7 +1688,7 @@
                 paid: false, 
                 at: Date.now() 
             });
-            setCurData(dat);
+            await setCurData(dat);
             
             document.getElementById('expenseDesc').value = '';
             document.getElementById('expenseCategory').value = '';
@@ -1251,45 +1699,44 @@
             showNotification(`Expense "${desc}" added successfully!`);
         }
 
-        function markPaid(idx) {
-            let dat = getCurData();
+        async function markPaid(idx) {
+            let dat = await getCurData();
             dat.expenses[idx].paid = !dat.expenses[idx].paid;
-            setCurData(dat);
+            await setCurData(dat);
             updateDisplay();
             showNotification(dat.expenses[idx].paid ? 'Marked as paid!' : 'Marked as unpaid!');
         }
 
-        function delExpense(idx) {
+        async function delExpense(idx) {
             if (!confirm('Are you sure you want to delete this expense?')) return;
-            let dat = getCurData();
+            let dat = await getCurData();
             dat.expenses.splice(idx, 1);
-            setCurData(dat);
+            await setCurData(dat);
             updateDisplay();
             showNotification('Expense deleted successfully!');
         }
 
-        function updateDisplay() {
+        async function updateDisplay() {
             if (!currentUser) return;
             
-            listMonths();
-            let dat = getCurData();
+            let dat = await getCurData();
             
             let creditTotal = dat.credits.reduce((a, x) => a + x.amount, 0);
             let expTotal = dat.expenses.reduce((a, x) => a + x.amount, 0);
             let savings = creditTotal - expTotal;
-            let bankBalance = getTotalBankBalance();
+            let bankBalance = await getTotalBankBalance();
 
             document.getElementById('salaryLbl').textContent = '₹' + creditTotal;
             document.getElementById('expLbl').textContent = '₹' + expTotal;
             document.getElementById('savLbl').textContent = '₹' + Math.max(0, savings);
             document.getElementById('bankBalanceLbl').textContent = '₹' + bankBalance;
 
-            renderExpenses();
-            updateCharts();
+            await renderExpenses();
+            await updateCharts();
         }
 
-        function renderExpenses() {
-            let dat = getCurData();
+        async function renderExpenses() {
+            let dat = await getCurData();
             let expensesList = document.getElementById('expensesList');
             expensesList.innerHTML = '';
 
@@ -1324,8 +1771,8 @@
             });
         }
 
-        function updateCharts() {
-            let dat = getCurData();
+        async function updateCharts() {
+            let dat = await getCurData();
             let creditTotal = dat.credits.reduce((a, x) => a + x.amount, 0);
             let expTotal = dat.expenses.reduce((a, x) => a + x.amount, 0);
             let savings = Math.max(0, creditTotal - expTotal);
@@ -1338,107 +1785,111 @@
             const pieCtx = document.getElementById('pieChart');
             if (pieChart) pieChart.destroy();
             
-            pieChart = new Chart(pieCtx, {
-                type: 'pie',
-                data: {
-                    labels: ['Credited Salary', 'Expenses', 'Savings'],
-                    datasets: [{
-                        data: [creditTotal, expTotal, savings],
-                        backgroundColor: ['#4CAF50', '#f44336', '#2196F3'],
-                        borderWidth: 2,
-                        borderColor: '#fff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                font: { size: 12 }
+            if (pieCtx) {
+                pieChart = new Chart(pieCtx, {
+                    type: 'pie',
+                    data: {
+                        labels: ['Credited Salary', 'Expenses', 'Savings'],
+                        datasets: [{
+                            data: [creditTotal, expTotal, savings],
+                            backgroundColor: ['#4CAF50', '#f44336', '#2196F3'],
+                            borderWidth: 2,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    font: { size: 12 }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Monthly Financial Distribution'
                             }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Monthly Financial Distribution'
                         }
                     }
-                }
-            });
+                });
+            }
 
             const barCtx = document.getElementById('barChart');
             if (barChart) barChart.destroy();
             
-            barChart = new Chart(barCtx, {
-                type: 'bar',
-                data: {
-                    labels: Object.keys(categoryData),
-                    datasets: [{
-                        label: 'Amount (₹)',
-                        data: Object.values(categoryData),
-                        backgroundColor: '#667eea',
-                        borderColor: '#5a6fd8',
-                        borderWidth: 1,
-                        borderRadius: 5
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        title: {
-                            display: true,
-                            text: 'Category-wise Expenses'
-                        }
+            if (barCtx && Object.keys(categoryData).length > 0) {
+                barChart = new Chart(barCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: Object.keys(categoryData),
+                        datasets: [{
+                            label: 'Amount (₹)',
+                            data: Object.values(categoryData),
+                            backgroundColor: '#667eea',
+                            borderColor: '#5a6fd8',
+                            borderWidth: 1,
+                            borderRadius: 5
+                        }]
                     },
-                    scales: {
-                        y: { beginAtZero: true }
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: 'Category-wise Expenses'
+                            }
+                        },
+                        scales: {
+                            y: { beginAtZero: true }
+                        }
                     }
-                }
-            });
+                });
+            }
 
             const doughnutCtx = document.getElementById('doughnutChart');
             if (doughnutChart) doughnutChart.destroy();
             
-            doughnutChart = new Chart(doughnutCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['Available', 'Spent'],
-                    datasets: [{
-                        data: [savings, expTotal],
-                        backgroundColor: ['#4CAF50', '#f44336'],
-                        borderWidth: 3,
-                        borderColor: '#fff'
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '60%',
-                    plugins: {
-                        legend: {
-                            position: 'bottom',
-                            labels: {
-                                padding: 15,
-                                font: { size: 12 }
+            if (doughnutCtx) {
+                doughnutChart = new Chart(doughnutCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Available', 'Spent'],
+                        datasets: [{
+                            data: [savings, expTotal],
+                            backgroundColor: ['#4CAF50', '#f44336'],
+                            borderWidth: 3,
+                            borderColor: '#fff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        cutout: '60%',
+                        plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    padding: 15,
+                                    font: { size: 12 }
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: 'Financial Health'
                             }
-                        },
-                        title: {
-                            display: true,
-                            text: 'Financial Health'
                         }
                     }
-                }
-            });
+                });
+            }
         }
-
-        mSel.addEventListener('change', switchMonth);
         
-        window.onload = () => {
-            checkAutoLogin();
+        window.onload = async () => {
+            await checkAutoLogin();
         };
     </script>
 </body>
