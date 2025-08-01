@@ -13,7 +13,6 @@
             box-sizing: border-box;
         }
 
-        /* Prevent horizontal scrolling */
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -28,12 +27,10 @@
             color: #333;
         }
 
-        /* CSS Variables for mobile viewport */
         :root {
             --vh: 1vh;
         }
 
-        /* Login Screen Styles */
         .login-container {
             display: flex;
             justify-content: center;
@@ -682,42 +679,6 @@
             background: linear-gradient(45deg, #dc3545, #c82333);
         }
 
-        .flowchart {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(15px);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 25px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .flow-step {
-            display: inline-block;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 15px 25px;
-            border-radius: 25px;
-            margin: 10px;
-            font-weight: 600;
-            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        .flow-step:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
-        }
-
-        .flow-arrow {
-            font-size: 1.5rem;
-            color: #667eea;
-            margin: 0 10px;
-        }
-
-        /* Enhanced Footer Styles */
         .footer {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(15px);
@@ -808,220 +769,278 @@
             opacity: 0.9;
         }
 
-        /* Enhanced Mobile Responsiveness */
-        @media (max-width: 1200px) {
-            .main-content {
-                grid-template-columns: 1fr !important;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            }
+        /* Database Status Indicator */
+        .db-status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px 15px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        @media (max-width: 768px) {
-            .container {
-                padding: 10px !important;
-                margin: 0 !important;
-            }
-            
-            .login-box {
-                padding: 30px 20px;
-                margin: 10px;
-            }
-            
-            .header h1 {
-                font-size: 2.2rem !important;
-            }
-            
-            .header p {
-                font-size: 1rem !important;
-            }
-            
-            .dashboard-grid {
-                grid-template-columns: 1fr !important;
-                gap: 15px;
-            }
-            
-            .stat-card {
-                padding: 20px !important;
-                margin-bottom: 10px;
-            }
-            
-            .stat-card .amount {
-                font-size: 1.6rem !important;
-            }
-            
-            .tabs {
-                flex-direction: column !important;
-            }
-            
-            .tab {
-                padding: 15px !important;
-                font-size: 0.9rem !important;
-                width: 100% !important;
-                text-align: center;
-            }
-            
-            .tab-content {
-                padding: 20px !important;
-            }
-            
-            .charts-container {
-                padding: 20px !important;
-            }
-            
-            .chart-wrapper {
-                height: 250px !important;
-            }
-            
-            .expense-item {
-                flex-direction: column !important;
-                align-items: flex-start !important;
-                gap: 15px;
-                padding: 15px !important;
-            }
-            
-            .expense-actions {
-                width: 100% !important;
-                justify-content: flex-end;
-            }
-            
-            .flow-step {
-                display: block !important;
-                margin: 8px auto !important;
-                padding: 10px 15px !important;
-                font-size: 0.9rem !important;
-            }
-            
-            .flow-arrow {
-                display: block !important;
-                text-align: center;
-                margin: 5px 0 !important;
-                transform: rotate(90deg);
-                font-size: 1.2rem !important;
-            }
-            
-            .footer {
-                padding: 20px !important;
-            }
-            
-            .footer-main {
-                font-size: 1.1rem !important;
-                text-align: center;
-            }
-            
-            .developer-info {
-                flex-direction: column !important;
-                text-align: center;
-                padding: 15px 20px !important;
-            }
-            
-            .developer-details {
-                text-align: center !important;
-            }
-            
-            .user-info {
-                flex-direction: column !important;
-                gap: 10px;
-                text-align: center;
-            }
-            
-            .notification {
-                top: 10px !important;
-                right: 10px !important;
-                left: 10px !important;
-                transform: translateY(-100px) !important;
-                font-size: 0.9rem !important;
-                padding: 12px 15px !important;
-            }
-            
-            .notification.show {
-                transform: translateY(0) !important;
-            }
-
-            .main-content {
-                grid-template-columns: 1fr !important;
-                gap: 15px;
-            }
-
-            /* Fix for input and select widths */
-            input, select, .btn {
-                width: 100% !important;
-                box-sizing: border-box !important;
-            }
-
-            .expense-details {
-                margin-right: 0 !important;
-                margin-bottom: 10px;
-            }
-
-            .date-selectors {
-                flex-direction: column !important;
-                gap: 10px;
-            }
-
-            .month-select, .year-select {
-                min-width: 100% !important;
-            }
-
-            .month-navigation {
-                flex-direction: column !important;
-                gap: 10px;
-            }
+        .db-status.connected {
+            color: #28a745;
         }
 
-        @media (max-width: 480px) {
-            .container {
-                padding: 5px !important;
-                margin: 0 !important;
-            }
+        .db-status.disconnected {
+            color: #dc3545;
+        }
 
-            .header h1 {
-                font-size: 1.8rem !important;
-            }
-            
-            .stat-card i {
-                font-size: 2rem !important;
-            }
-            
-            .stat-card .amount {
-                font-size: 1.4rem !important;
-            }
-            
-            .btn {
-                padding: 12px 20px !important;
-                font-size: 0.9rem !important;
-            }
-            
-            .form-group input, .form-group select {
-                padding: 12px !important;
-                font-size: 0.9rem !important;
-            }
+        .db-status i {
+            font-size: 1rem;
+        }
 
-            .login-box {
-                padding: 20px 15px !important;
-            }
+            /* Update existing media queries for better mobile layout */
+@media (max-width: 1200px) {
+    .main-content {
+        grid-template-columns: 1fr; /* Keep single column for simplicity, but enhance child layouts */
+        gap: 20px;
+    }
 
-            .tab-content {
-                padding: 15px !important;
-            }
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Allow cards to wrap naturally */
+        gap: 15px;
+    }
 
-            .charts-container {
-                padding: 15px !important;
-            }
+    .tabs {
+        display: flex;
+        flex-wrap: nowrap; /* Prevent tabs from stacking */
+        overflow-x: auto; /* Allow horizontal scrolling for tabs */
+    }
 
-            .expenses-list {
-                padding: 15px !important;
-            }
+    .tab {
+        flex: 0 0 auto; /* Prevent tabs from stretching */
+        min-width: 100px; /* Ensure tabs are compact but readable */
+        padding: 12px;
+    }
+}
 
-            .footer {
-                padding: 15px !important;
-            }
+@media (max-width: 768px) {
+    .container {
+        padding: 15px !important;
+        margin: 0 auto !important;
+        max-width: 100%;
+    }
+
+    .login-box {
+        padding: 25px 15px;
+        margin: 10px;
+        border-radius: 15px;
+    }
+
+    .header h1 {
+        font-size: 1.8rem !important;
+    }
+
+    .header p {
+        font-size: 0.95rem !important;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Smaller cards for mobile */
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 15px !important;
+        margin-bottom: 10px;
+        border-radius: 10px;
+    }
+
+    .stat-card .amount {
+        font-size: 1.4rem !important;
+    }
+
+    .tabs {
+        flex-direction: row !important; /* Keep tabs horizontal */
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .tab {
+        padding: 10px !important;
+        font-size: 0.85rem !important;
+        min-width: 90px !important; /* Compact tabs */
+        text-align: center;
+    }
+
+    .tab-content {
+        padding: 15px !important;
+    }
+
+    .charts-container {
+        padding: 15px !important;
+    }
+
+    .chart-wrapper {
+        height: 220px !important; /* Slightly smaller charts for mobile */
+    }
+
+    .expense-item {
+        flex-direction: row !important; /* Keep expense items in a row where possible */
+        align-items: center !important;
+        gap: 10px;
+        padding: 12px !important;
+        flex-wrap: wrap; /* Allow wrapping for long content */
+    }
+
+    .expense-details {
+        flex: 1;
+        margin-right: 10px !important;
+        min-width: 150px; /* Ensure details don't get too cramped */
+    }
+
+    .expense-actions {
+        flex: 0 0 auto;
+        justify-content: flex-end;
+        gap: 5px;
+    }
+
+    .month-selector {
+        flex-direction: row; /* Keep month selector horizontal */
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .date-selectors {
+        flex-direction: row !important; /* Horizontal date selectors */
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .month-select, .year-select {
+        min-width: 120px !important; /* Compact but usable */
+    }
+
+    .month-navigation {
+        flex-direction: row !important; /* Horizontal navigation buttons */
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .notification {
+        top: 10px !important;
+        right: 10px !important;
+        left: auto !important;
+        max-width: 300px;
+        padding: 10px 15px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .notification.show {
+        transform: translateX(0) !important;
+    }
+
+    .footer {
+        padding: 15px !important;
+    }
+
+    .footer-main {
+        font-size: 1rem !important;
+        flex-wrap: wrap;
+    }
+
+    .developer-info {
+        flex-direction: row !important;
+        padding: 12px 15px !important;
+    }
+
+    .developer-details {
+        text-align: left !important;
+    }
+
+    .user-info {
+        flex-direction: row !important;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        flex-wrap: wrap;
+    }
+
+    .db-status {
+        bottom: 10px !important;
+        left: 10px !important;
+        font-size: 0.75rem !important;
+        padding: 6px 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px !important;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: 1fr !important; /* Stack cards for very small screens */
+        gap: 10px;
+    }
+
+    .stat-card {
+        padding: 12px !important;
+    }
+
+    .stat-card i {
+        font-size: 1.8rem !important;
+    }
+
+    .stat-card .amount {
+        font-size: 1.2rem !important;
+    }
+
+    .btn {
+        padding: 10px 15px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .form-group input, .form-group select {
+        padding: 10px !important;
+        font-size: 0.85rem !important;
+    }
+
+    .login-box {
+        padding: 15px 10px !important;
+        margin: 5px;
+    }
+
+    .tab-content {
+        padding: 12px !important;
+    }
+
+    .charts-container {
+        padding: 12px !important;
+    }
+
+    .expense-item {
+        flex-direction: column !important; /* Stack for very small screens */
+        padding: 10px !important;
+    }
+
+    .expense-details {
+        margin-bottom: 8px !important;
+    }
+
+    .footer {
+        padding: 12px !important;
+    }
+}
         }
     </style>
 </head>
 <body>
+    <!-- Database Status Indicator -->
+    <div id="dbStatus" class="db-status disconnected">
+        <i class="fas fa-database"></i>
+        <span id="dbStatusText">Connecting...</span>
+    </div>
+
     <!-- Login Screen -->
     <div id="loginScreen" class="login-container">
         <div class="login-box">
@@ -1219,7 +1238,6 @@
             <div id="expensesList"></div>
         </div>
 
-
         <!-- Enhanced Footer -->
         <footer class="footer">
             <div class="footer-content">
@@ -1229,21 +1247,79 @@
                     <span>by</span>
                     <span class="developer-name">Karan Pardeshi</span>
                 </div>
-               
             </div>
         </footer>
     </div>
 
     <script>
-        // IndexedDB Database Class
-        class ExpenseDB {
+        // Enhanced Database System with Multiple Storage Options
+        class AdvancedExpenseDB {
             constructor() {
                 this.dbName = 'ExpenseTrackerDB';
-                this.version = 1;
+                this.version = 2;
                 this.db = null;
+                this.dbType = 'unknown';
+                this.isOnline = navigator.onLine;
+                this.apiKey = 'your-firebase-api-key'; // Replace with your Firebase API key
+                this.firebaseUrl = 'https://your-project.firebaseio.com'; // Replace with your Firebase URL
+                this.retryAttempts = 3;
+                this.retryDelay = 1000;
+                
+                // Listen for online/offline events
+                window.addEventListener('online', () => {
+                    this.isOnline = true;
+                    this.updateDBStatus('online', 'Online');
+                    this.syncOfflineData();
+                });
+                
+                window.addEventListener('offline', () => {
+                    this.isOnline = false;
+                    this.updateDBStatus('disconnected', 'Offline Mode');
+                });
             }
             
             async init() {
+                try {
+                    // Try IndexedDB first
+                    if (this.supportsIndexedDB()) {
+                        await this.initIndexedDB();
+                        this.dbType = 'indexeddb';
+                        this.updateDBStatus('connected', 'IndexedDB');
+                        return true;
+                    }
+                    
+                    // Fallback to localStorage
+                    if (this.supportsLocalStorage()) {
+                        this.dbType = 'localstorage';
+                        this.updateDBStatus('connected', 'LocalStorage');
+                        return true;
+                    }
+                    
+                    throw new Error('No storage method available');
+                } catch (error) {
+                    console.error('Database initialization failed:', error);
+                    this.dbType = 'none';
+                    this.updateDBStatus('disconnected', 'Storage Failed');
+                    return false;
+                }
+            }
+            
+            supportsIndexedDB() {
+                return 'indexedDB' in window && indexedDB !== null;
+            }
+            
+            supportsLocalStorage() {
+                try {
+                    const test = 'test';
+                    localStorage.setItem(test, test);
+                    localStorage.removeItem(test);
+                    return true;
+                } catch(e) {
+                    return false;
+                }
+            }
+            
+            async initIndexedDB() {
                 return new Promise((resolve, reject) => {
                     const request = indexedDB.open(this.dbName, this.version);
                     
@@ -1255,53 +1331,281 @@
                     
                     request.onupgradeneeded = (event) => {
                         const db = event.target.result;
+                        
+                        // Create expenses store
                         if (!db.objectStoreNames.contains('expenses')) {
                             const expenseStore = db.createObjectStore('expenses', { keyPath: 'id' });
                             expenseStore.createIndex('username', 'username', { unique: false });
+                            expenseStore.createIndex('timestamp', 'timestamp', { unique: false });
                         }
+                        
+                        // Create users store
                         if (!db.objectStoreNames.contains('users')) {
-                            db.createObjectStore('users', { keyPath: 'username' });
+                            const userStore = db.createObjectStore('users', { keyPath: 'username' });
+                            userStore.createIndex('email', 'email', { unique: false });
+                        }
+                        
+                        // Create sync queue for offline support
+                        if (!db.objectStoreNames.contains('syncQueue')) {
+                            const syncStore = db.createObjectStore('syncQueue', { keyPath: 'id', autoIncrement: true });
+                            syncStore.createIndex('timestamp', 'timestamp', { unique: false });
+                            syncStore.createIndex('synced', 'synced', { unique: false });
                         }
                     };
                 });
             }
             
-            async saveUserData(username, data) {
-                const transaction = this.db.transaction(['expenses'], 'readwrite');
-                const store = transaction.objectStore('expenses');
-                const dataWithId = { id: username, username, data, timestamp: Date.now() };
-                return store.put(dataWithId);
+            updateDBStatus(status, text) {
+                const statusElement = document.getElementById('dbStatus');
+                const statusText = document.getElementById('dbStatusText');
+                
+                if (statusElement && statusText) {
+                    statusElement.className = `db-status ${status}`;
+                    statusText.textContent = text;
+                }
+            }
+            
+            async saveUserData(username, data, skipSync = false) {
+                const timestamp = Date.now();
+                const dataWithMeta = {
+                    id: username,
+                    username,
+                    data,
+                    timestamp,
+                    lastModified: timestamp
+                };
+                
+                try {
+                    if (this.dbType === 'indexeddb') {
+                        const transaction = this.db.transaction(['expenses'], 'readwrite');
+                        const store = transaction.objectStore('expenses');
+                        await this.promisifyRequest(store.put(dataWithMeta));
+                    } else if (this.dbType === 'localstorage') {
+                        localStorage.setItem(`expData_${username}`, JSON.stringify(dataWithMeta));
+                    }
+                    
+                    // Add to sync queue if online sync is enabled and not already syncing
+                    if (!skipSync && this.isOnline) {
+                        await this.queueForSync('save_user_data', { username, data, timestamp });
+                    }
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Failed to save user data:', error);
+                    // Fallback to localStorage if IndexedDB fails
+                    if (this.dbType === 'indexeddb') {
+                        try {
+                            localStorage.setItem(`expData_${username}`, JSON.stringify(dataWithMeta));
+                            this.dbType = 'localstorage';
+                            this.updateDBStatus('connected', 'LocalStorage (Fallback)');
+                            return true;
+                        } catch (fallbackError) {
+                            console.error('Fallback save also failed:', fallbackError);
+                        }
+                    }
+                    return false;
+                }
             }
             
             async getUserData(username) {
-                const transaction = this.db.transaction(['expenses'], 'readonly');
-                const store = transaction.objectStore('expenses');
-                const request = store.get(username);
-                return new Promise((resolve) => {
-                    request.onsuccess = () => resolve(request.result?.data || {});
-                    request.onerror = () => resolve({});
-                });
+                try {
+                    if (this.dbType === 'indexeddb') {
+                        const transaction = this.db.transaction(['expenses'], 'readonly');
+                        const store = transaction.objectStore('expenses');
+                        const request = store.get(username);
+                        const result = await this.promisifyRequest(request);
+                        return result?.data || {};
+                    } else if (this.dbType === 'localstorage') {
+                        const data = localStorage.getItem(`expData_${username}`);
+                        return data ? JSON.parse(data).data || {} : {};
+                    }
+                    return {};
+                } catch (error) {
+                    console.error('Failed to get user data:', error);
+                    return {};
+                }
             }
-
+            
             async saveUser(username, userData) {
-                const transaction = this.db.transaction(['users'], 'readwrite');
-                const store = transaction.objectStore('users');
-                return store.put({ username, ...userData });
+                const userWithMeta = {
+                    username,
+                    ...userData,
+                    createdAt: userData.createdAt || Date.now(),
+                    lastLogin: Date.now()
+                };
+                
+                try {
+                    if (this.dbType === 'indexeddb') {
+                        const transaction = this.db.transaction(['users'], 'readwrite');
+                        const store = transaction.objectStore('users');
+                        await this.promisifyRequest(store.put(userWithMeta));
+                    } else if (this.dbType === 'localstorage') {
+                        const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
+                        users[username] = userWithMeta;
+                        localStorage.setItem('expenseUsers', JSON.stringify(users));
+                    }
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Failed to save user:', error);
+                    return false;
+                }
             }
-
+            
             async getUser(username) {
-                const transaction = this.db.transaction(['users'], 'readonly');
-                const store = transaction.objectStore('users');
-                const request = store.get(username);
+                try {
+                    if (this.dbType === 'indexeddb') {
+                        const transaction = this.db.transaction(['users'], 'readonly');
+                        const store = transaction.objectStore('users');
+                        const request = store.get(username);
+                        return await this.promisifyRequest(request);
+                    } else if (this.dbType === 'localstorage') {
+                        const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
+                        return users[username] || null;
+                    }
+                    return null;
+                } catch (error) {
+                    console.error('Failed to get user:', error);
+                    return null;
+                }
+            }
+            
+            async queueForSync(action, data) {
+                if (this.dbType !== 'indexeddb') return;
+                
+                try {
+                    const syncItem = {
+                        action,
+                        data,
+                        timestamp: Date.now(),
+                        synced: false,
+                        retries: 0
+                    };
+                    
+                    const transaction = this.db.transaction(['syncQueue'], 'readwrite');
+                    const store = transaction.objectStore('syncQueue');
+                    await this.promisifyRequest(store.add(syncItem));
+                } catch (error) {
+                    console.error('Failed to queue for sync:', error);
+                }
+            }
+            
+            async syncOfflineData() {
+                if (this.dbType !== 'indexeddb' || !this.isOnline) return;
+                
+                try {
+                    const transaction = this.db.transaction(['syncQueue'], 'readwrite');
+                    const store = transaction.objectStore('syncQueue');
+                    const index = store.index('synced');
+                    const request = index.getAll(false);
+                    const unsyncedItems = await this.promisifyRequest(request);
+                    
+                    for (const item of unsyncedItems) {
+                        try {
+                            // Simulate cloud sync (replace with actual cloud service)
+                            await this.syncToCloud(item);
+                            
+                            // Mark as synced
+                            item.synced = true;
+                            item.syncedAt = Date.now();
+                            await this.promisifyRequest(store.put(item));
+                            
+                        } catch (syncError) {
+                            console.error('Failed to sync item:', syncError);
+                            item.retries = (item.retries || 0) + 1;
+                            
+                            if (item.retries < this.retryAttempts) {
+                                await this.promisifyRequest(store.put(item));
+                            } else {
+                                console.error('Max retries exceeded for sync item:', item);
+                            }
+                        }
+                    }
+                } catch (error) {
+                    console.error('Failed to sync offline data:', error);
+                }
+            }
+            
+            async syncToCloud(item) {
+                // Placeholder for cloud sync functionality
+                // Replace this with actual Firebase, Supabase, or other cloud service integration
                 return new Promise((resolve) => {
-                    request.onsuccess = () => resolve(request.result);
-                    request.onerror = () => resolve(null);
+                    setTimeout(() => {
+                        console.log('Synced to cloud:', item.action);
+                        resolve(true);
+                    }, 100);
                 });
+            }
+            
+            async exportData(username) {
+                try {
+                    const userData = await this.getUserData(username);
+                    const user = await this.getUser(username);
+                    
+                    const exportData = {
+                        user: user,
+                        expenses: userData,
+                        exportedAt: new Date().toISOString(),
+                        appVersion: '2.0.0'
+                    };
+                    
+                    return exportData;
+                } catch (error) {
+                    console.error('Failed to export data:', error);
+                    return null;
+                }
+            }
+            
+            async importData(username, importData) {
+                try {
+                    if (importData.user) {
+                        await this.saveUser(username, importData.user);
+                    }
+                    
+                    if (importData.expenses) {
+                        await this.saveUserData(username, importData.expenses, true);
+                    }
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Failed to import data:', error);
+                    return false;
+                }
+            }
+            
+            promisifyRequest(request) {
+                return new Promise((resolve, reject) => {
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => reject(request.error);
+                });
+            }
+            
+            async clearUserData(username) {
+                try {
+                    if (this.dbType === 'indexeddb') {
+                        const transaction = this.db.transaction(['expenses', 'users'], 'readwrite');
+                        const expenseStore = transaction.objectStore('expenses');
+                        const userStore = transaction.objectStore('users');
+                        
+                        await this.promisifyRequest(expenseStore.delete(username));
+                        await this.promisifyRequest(userStore.delete(username));
+                    } else if (this.dbType === 'localstorage') {
+                        localStorage.removeItem(`expData_${username}`);
+                        const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
+                        delete users[username];
+                        localStorage.setItem('expenseUsers', JSON.stringify(users));
+                    }
+                    
+                    return true;
+                } catch (error) {
+                    console.error('Failed to clear user data:', error);
+                    return false;
+                }
             }
         }
 
-        // Initialize database
-        const expenseDB = new ExpenseDB();
+        // Initialize enhanced database
+        const expenseDB = new AdvancedExpenseDB();
         let dbInitialized = false;
 
         // Mobile viewport fix
@@ -1341,6 +1645,22 @@
             "Investments": ["Stocks", "Mutual Funds", "Fixed Deposits", "SIP", "Gold", "Real Estate"],
             "Others": ["Charity", "Gifts", "Miscellaneous", "Emergency", "Repairs", "Services"]
         };
+
+        // Initialize database
+        async function initDB() {
+            if (!dbInitialized) {
+                try {
+                    dbInitialized = await expenseDB.init();
+                    if (dbInitialized) {
+                        console.log('Database initialized successfully');
+                    }
+                } catch (error) {
+                    console.error('Database initialization failed:', error);
+                    dbInitialized = false;
+                }
+            }
+            return dbInitialized;
+        }
 
         // Initialize month and year selectors
         function initializeDateSelectors() {
@@ -1429,19 +1749,6 @@
             showNotification(`Switched to current month: ${currentSelectedMonth} ${currentSelectedYear}`);
         }
 
-        async function initDB() {
-            if (!dbInitialized) {
-                try {
-                    await expenseDB.init();
-                    dbInitialized = true;
-                } catch (error) {
-                    console.error('Database initialization failed:', error);
-                    // Fallback to localStorage
-                    dbInitialized = false;
-                }
-            }
-        }
-
         function switchLoginTab(mode) {
             isLoginMode = mode === 'login';
             document.querySelectorAll('.login-tab').forEach(tab => tab.classList.remove('active'));
@@ -1470,426 +1777,314 @@
                 return;
             }
 
-            await initDB();
+            const dbReady = await initDB();
+            if (!dbReady) {
+                showNotification('Database not available. Some features may not work properly.', 'error');
+            }
 
             if (isLoginMode) {
                 // Login Logic
-                if (dbInitialized) {
-                    const user = await expenseDB.getUser(username);
-                    if (user && user.password === password) {
-                        currentUser = username;
-                        localStorage.setItem('currentUser', username);
-                        showLogin();
-                        showNotification(`Welcome back, ${username}!`);
-                    } else {
-                        showNotification('Invalid username or password!', 'error');
-                    }
+                const user = await expenseDB.getUser(username);
+                if (user && user.password === password) {
+                    currentUser = username;
+                    localStorage.setItem('currentUser', username);
+                    
+                    // Update last login
+                    user.lastLogin = Date.now();
+                    await expenseDB.saveUser(username, user);                
+					// Show main app and update UI
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('mainApp').classList.add('show');
+                    document.getElementById('currentUser').textContent = username;
+                    initializeDateSelectors();
+                    updateDisplay();
+                    showNotification(`Welcome back, ${username}!`, 'success');
                 } else {
-                    // Fallback to localStorage
-                    const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
-                    if (users[username] && users[username].password === password) {
-                        currentUser = username;
-                        localStorage.setItem('currentUser', username);
-                        showLogin();
-                        showNotification(`Welcome back, ${username}!`);
-                    } else {
-                        showNotification('Invalid username or password!', 'error');
-                    }
+                    showNotification('Invalid username or password', 'error');
                 }
             } else {
                 // Register Logic
                 if (!email) {
-                    showNotification('Email is required for registration!', 'error');
+                    showNotification('Email is required for registration', 'error');
                     return;
                 }
-                
-                if (dbInitialized) {
-                    const existingUser = await expenseDB.getUser(username);
-                    if (existingUser) {
-                        showNotification('Username already exists!', 'error');
-                        return;
-                    }
-                    
-                    await expenseDB.saveUser(username, { password, email, createdAt: Date.now() });
+                const existingUser = await expenseDB.getUser(username);
+                if (existingUser) {
+                    showNotification('Username already exists', 'error');
+                    return;
+                }
+                const userData = {
+                    password,
+                    email,
+                    createdAt: Date.now()
+                };
+                const saved = await expenseDB.saveUser(username, userData);
+                if (saved) {
                     currentUser = username;
                     localStorage.setItem('currentUser', username);
-                    showLogin();
-                    showNotification(`Account created successfully! Welcome, ${username}!`);
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('mainApp').classList.add('show');
+                    document.getElementById('currentUser').textContent = username;
+                    initializeDateSelectors();
+                    updateDisplay();
+                    showNotification(`Registered successfully as ${username}!`, 'success');
                 } else {
-                    // Fallback to localStorage
-                    const users = JSON.parse(localStorage.getItem('expenseUsers') || '{}');
-                    if (users[username]) {
-                        showNotification('Username already exists!', 'error');
-                        return;
-                    }
-                    
-                    users[username] = { password, email, createdAt: Date.now() };
-                    localStorage.setItem('expenseUsers', JSON.stringify(users));
-                    currentUser = username;
-                    localStorage.setItem('currentUser', username);
-                    showLogin();
-                    showNotification(`Account created successfully! Welcome, ${username}!`);
+                    showNotification('Registration failed. Please try again.', 'error');
                 }
             }
         }
 
-        function showLogin() {
-            document.getElementById('loginScreen').style.display = 'none';
-            document.getElementById('mainApp').classList.add('show');
-            document.getElementById('currentUser').textContent = currentUser;
-            initializeDateSelectors();
-            updateDisplay();
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = `notification ${type} show`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
         }
 
-        function logout() {
-            currentUser = null;
-            localStorage.removeItem('currentUser');
-            document.getElementById('loginScreen').style.display = 'flex';
-            document.getElementById('mainApp').classList.remove('show');
-            document.getElementById('loginForm').reset();
-            showNotification('Logged out successfully!');
-        }
+        async function updateDisplay() {
+            if (!currentUser) return;
+            const userData = await expenseDB.getUserData(currentUser);
+            const monthData = userData[curMonth] || { salary: 0, expenses: [], savings: 0, bankBalance: 0 };
 
-        async function checkAutoLogin() {
-            const savedUser = localStorage.getItem('currentUser');
-            if (savedUser) {
-                await initDB();
-                currentUser = savedUser;
-                showLogin();
-            }
+            // Update stat cards
+            document.getElementById('salaryLbl').textContent = `₹${monthData.salary || 0}`;
+            document.getElementById('expLbl').textContent = `₹${monthData.expenses.reduce((sum, exp) => sum + (exp.amount || 0), 0)}`;
+            document.getElementById('savLbl').textContent = `₹${monthData.savings || 0}`;
+            document.getElementById('bankBalanceLbl').textContent = `₹${monthData.bankBalance || 0}`;
+
+            // Update expense list
+            const expensesList = document.getElementById('expensesList');
+            expensesList.innerHTML = '';
+            monthData.expenses.forEach((expense, index) => {
+                const expenseItem = document.createElement('div');
+                expenseItem.className = `expense-item ${expense.paid ? 'paid' : ''}`;
+                expenseItem.innerHTML = `
+                    <div class="expense-details">
+                        <div class="expense-desc">${expense.description}</div>
+                        <div class="expense-category">${expense.category}
+                            ${expense.subcategory ? `<span class="expense-subcategory">${expense.subcategory}</span>` : ''}
+                        </div>
+                        <div class="expense-amount">₹${expense.amount}</div>
+                    </div>
+                    <div class="expense-actions">
+                        <button class="btn btn-small btn-success" onclick="togglePaid(${index})">${expense.paid ? 'Unmark Paid' : 'Mark Paid'}</button>
+                        <button class="btn btn-small btn-danger" onclick="deleteExpense(${index})">Delete</button>
+                    </div>
+                `;
+                expensesList.appendChild(expenseItem);
+            });
+
+            // Update charts
+            updateCharts(monthData);
         }
 
         function updateSubcategories() {
-            const category = document.getElementById('expenseCategory').value;
+            const categorySelect = document.getElementById('expenseCategory');
             const subcategorySelect = document.getElementById('expenseSubcategory');
-            
+            const category = categorySelect.value;
+            subcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
             if (category && subcategories[category]) {
-                subcategorySelect.innerHTML = '<option value="">Select Subcategory</option>';
+                subcategorySelect.classList.add('show');
                 subcategories[category].forEach(sub => {
                     const option = document.createElement('option');
                     option.value = sub;
                     option.textContent = sub;
                     subcategorySelect.appendChild(option);
                 });
-                subcategorySelect.classList.add('show');
             } else {
                 subcategorySelect.classList.remove('show');
             }
         }
 
-        function showNotification(message, type = 'success') {
-            // Remove existing notification
-            const existingNotification = document.querySelector('.notification');
-            if (existingNotification) {
-                existingNotification.remove();
-            }
-
-            const notification = document.createElement('div');
-            notification.className = `notification ${type}`;
-            notification.innerHTML = `<i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-triangle'}"></i> ${message}`;
-            document.body.appendChild(notification);
-            
-            setTimeout(() => notification.classList.add('show'), 100);
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => {
-                    if (notification.parentNode) {
-                        notification.parentNode.removeChild(notification);
-                    }
-                }, 300);
-            }, 3000);
-        }
-
-        async function getAllData() {
-            if (dbInitialized) {
-                return await expenseDB.getUserData(currentUser);
-            } else {
-                return JSON.parse(localStorage.getItem(`expData_${currentUser}`) || '{}');
-            }
-        }
-
-        async function saveData(obj) {
-            if (dbInitialized) {
-                await expenseDB.saveUserData(currentUser, obj);
-            } else {
-                localStorage.setItem(`expData_${currentUser}`, JSON.stringify(obj));
-            }
-        }
-
-        async function getCurData() {
-            let all = await getAllData();
-            return all[curMonth] || { credits: [], expenses: [] };
-        }
-
-        async function setCurData(data) {
-            let all = await getAllData();
-            all[curMonth] = data;
-            await saveData(all);
-        }
-
-        async function getTotalBankBalance() {
-            let all = await getAllData();
-            let totalBalance = 0;
-            
-            Object.keys(all).forEach(month => {
-                let monthData = all[month];
-                let credits = monthData.credits.reduce((a, x) => a + x.amount, 0);
-                let expenses = monthData.expenses.reduce((a, x) => a + x.amount, 0);
-                totalBalance += credits - expenses;
-            });
-            
-            return totalBalance;
-        }
-
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            document.getElementById(tabName + '-tab').classList.add('active');
-            
-            if (tabName === 'savings') {
-                setTimeout(updateCharts, 100);
-            }
-        }
-
         async function addCredit() {
-            let v = parseFloat(document.getElementById('creditAmt').value);
-            if (!(v > 0)) {
-                showNotification('Please enter a valid salary amount!', 'error');
+            const amount = parseFloat(document.getElementById('creditAmt').value);
+            if (!amount || amount <= 0) {
+                showNotification('Please enter a valid salary amount', 'error');
                 return;
             }
-            let dat = await getCurData();
-            dat.credits.push({ amount: v, at: Date.now() });
-            await setCurData(dat);
-            
+            const userData = await expenseDB.getUserData(currentUser);
+            const monthData = userData[curMonth] || { salary: 0, expenses: [], savings: 0, bankBalance: 0 };
+            monthData.salary = (monthData.salary || 0) + amount;
+            monthData.savings = (monthData.savings || 0) + amount;
+            monthData.bankBalance = (monthData.bankBalance || 0) + amount;
+            userData[curMonth] = monthData;
+            await expenseDB.saveUserData(currentUser, userData);
             document.getElementById('creditAmt').value = '';
             updateDisplay();
-            showNotification(`₹${v} salary credited successfully!`);
+            showNotification('Salary credited successfully', 'success');
         }
 
         async function addExpense() {
-            let desc = document.getElementById('expenseDesc').value.trim();
-            let category = document.getElementById('expenseCategory').value;
-            let subcategory = document.getElementById('expenseSubcategory').value;
-            let amt = parseFloat(document.getElementById('expenseAmt').value);
-            
-            if (!desc || !category || !(amt > 0)) {
-                showNotification('Please fill all required fields!', 'error');
+            const description = document.getElementById('expenseDesc').value.trim();
+            const category = document.getElementById('expenseCategory').value;
+            const subcategory = document.getElementById('expenseSubcategory').value;
+            const amount = parseFloat(document.getElementById('expenseAmt').value);
+            if (!description || !category || !amount || amount <= 0) {
+                showNotification('Please fill in all required fields with valid data', 'error');
                 return;
             }
-            
-            let dat = await getCurData();
-            dat.expenses.push({ 
-                desc, 
-                category, 
-                subcategory,
-                amount: amt, 
-                paid: false, 
-                at: Date.now() 
+            const userData = await expenseDB.getUserData(currentUser);
+            const monthData = userData[curMonth] || { salary: 0, expenses: [], savings: 0, bankBalance: 0 };
+            monthData.expenses.push({
+                description,
+                category,
+                subcategory: subcategory || null,
+                amount,
+                paid: false,
+                timestamp: Date.now()
             });
-            await setCurData(dat);
-            
+            monthData.savings = (monthData.savings || 0) - amount;
+            monthData.bankBalance = (monthData.bankBalance || 0) - amount;
+            userData[curMonth] = monthData;
+            await expenseDB.saveUserData(currentUser, userData);
             document.getElementById('expenseDesc').value = '';
             document.getElementById('expenseCategory').value = '';
             document.getElementById('expenseSubcategory').value = '';
-            document.getElementById('expenseSubcategory').classList.remove('show');
             document.getElementById('expenseAmt').value = '';
+            updateSubcategories();
             updateDisplay();
-            showNotification(`Expense "${desc}" added successfully!`);
+            showNotification('Expense added successfully', 'success');
         }
 
-        async function markPaid(idx) {
-            let dat = await getCurData();
-            dat.expenses[idx].paid = !dat.expenses[idx].paid;
-            await setCurData(dat);
-            updateDisplay();
-            showNotification(dat.expenses[idx].paid ? 'Marked as paid!' : 'Marked as unpaid!');
-        }
-
-        async function delExpense(idx) {
-            if (!confirm('Are you sure you want to delete this expense?')) return;
-            let dat = await getCurData();
-            dat.expenses.splice(idx, 1);
-            await setCurData(dat);
-            updateDisplay();
-            showNotification('Expense deleted successfully!');
-        }
-
-        async function updateDisplay() {
-            if (!currentUser) return;
-            
-            let dat = await getCurData();
-            
-            let creditTotal = dat.credits.reduce((a, x) => a + x.amount, 0);
-            let expTotal = dat.expenses.reduce((a, x) => a + x.amount, 0);
-            let savings = creditTotal - expTotal;
-            let bankBalance = await getTotalBankBalance();
-
-            document.getElementById('salaryLbl').textContent = '₹' + creditTotal;
-            document.getElementById('expLbl').textContent = '₹' + expTotal;
-            document.getElementById('savLbl').textContent = '₹' + Math.max(0, savings);
-            document.getElementById('bankBalanceLbl').textContent = '₹' + bankBalance;
-
-            await renderExpenses();
-            await updateCharts();
-        }
-
-        async function renderExpenses() {
-            let dat = await getCurData();
-            let expensesList = document.getElementById('expensesList');
-            expensesList.innerHTML = '';
-
-            if (dat.expenses.length === 0) {
-                expensesList.innerHTML = '<p style="text-align: center; color: #666; padding: 30px; font-size: 1.1rem;">📋 No expenses recorded for this month.</p>';
-                return;
+        async function togglePaid(index) {
+            const userData = await expenseDB.getUserData(currentUser);
+            const monthData = userData[curMonth];
+            if (monthData && monthData.expenses[index]) {
+                monthData.expenses[index].paid = !monthData.expenses[index].paid;
+                await expenseDB.saveUserData(currentUser, userData);
+                updateDisplay();
+                showNotification(`Expense marked as ${monthData.expenses[index].paid ? 'paid' : 'unpaid'}`, 'success');
             }
-
-            dat.expenses.forEach((e, i) => {
-                let expenseItem = document.createElement('div');
-                expenseItem.className = `expense-item ${e.paid ? 'paid' : ''}`;
-                expenseItem.innerHTML = `
-                    <div class="expense-details">
-                        <div class="expense-desc">${e.desc}</div>
-                        <div class="expense-category">
-                            ${e.category}
-                            ${e.subcategory ? `<span class="expense-subcategory">${e.subcategory}</span>` : ''}
-                        </div>
-                        <div class="expense-amount">₹${e.amount}</div>
-                    </div>
-                    <div class="expense-actions">
-                        <button class="btn btn-${e.paid ? 'primary' : 'success'} btn-small" onclick="markPaid(${i})">
-                            <i class="fas fa-${e.paid ? 'undo' : 'check'}"></i>
-                            ${e.paid ? 'Unmark' : 'Paid'}
-                        </button>
-                        <button class="btn btn-danger btn-small" onclick="delExpense(${i})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `;
-                expensesList.appendChild(expenseItem);
-            });
         }
 
-        async function updateCharts() {
-            let dat = await getCurData();
-            let creditTotal = dat.credits.reduce((a, x) => a + x.amount, 0);
-            let expTotal = dat.expenses.reduce((a, x) => a + x.amount, 0);
-            let savings = Math.max(0, creditTotal - expTotal);
+        async function deleteExpense(index) {
+            const userData = await expenseDB.getUserData(currentUser);
+            const monthData = userData[curMonth];
+            if (monthData && monthData.expenses[index]) {
+                const amount = monthData.expenses[index].amount;
+                monthData.expenses.splice(index, 1);
+                monthData.savings = (monthData.savings || 0) + amount;
+                monthData.bankBalance = (monthData.bankBalance || 0) + amount;
+                userData[curMonth] = monthData;
+                await expenseDB.saveUserData(currentUser, userData);
+                updateDisplay();
+                showNotification('Expense deleted successfully', 'success');
+            }
+        }
 
-            let categoryData = {};
-            dat.expenses.forEach(exp => {
-                categoryData[exp.category] = (categoryData[exp.category] || 0) + exp.amount;
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.querySelector(`[onclick="switchTab('${tabId}')"]`).classList.add('active');
+            document.getElementById(`${tabId}-tab`).classList.add('active');
+        }
+
+        async function logout() {
+            currentUser = null;
+            localStorage.removeItem('currentUser');
+            document.getElementById('mainApp').classList.remove('show');
+            document.getElementById('loginScreen').style.display = 'flex';
+            showNotification('Logged out successfully', 'success');
+        }
+
+        function updateCharts(monthData) {
+            const expenseByCategory = {};
+            monthData.expenses.forEach(exp => {
+                expenseByCategory[exp.category] = (expenseByCategory[exp.category] || 0) + exp.amount;
             });
 
-            const pieCtx = document.getElementById('pieChart');
+            const categories = Object.keys(expenseByCategory);
+            const amounts = Object.values(expenseByCategory);
+
+            // Destroy existing charts to prevent memory leaks
             if (pieChart) pieChart.destroy();
-            
-            if (pieCtx) {
-                pieChart = new Chart(pieCtx, {
-                    type: 'pie',
-                    data: {
-                        labels: ['Credited Salary', 'Expenses', 'Savings'],
-                        datasets: [{
-                            data: [creditTotal, expTotal, savings],
-                            backgroundColor: ['#4CAF50', '#f44336', '#2196F3'],
-                            borderWidth: 2,
-                            borderColor: '#fff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 15,
-                                    font: { size: 12 }
-                                }
-                            },
-                            title: {
-                                display: true,
-                                text: 'Monthly Financial Distribution'
-                            }
-                        }
-                    }
-                });
-            }
-
-            const barCtx = document.getElementById('barChart');
             if (barChart) barChart.destroy();
-            
-            if (barCtx && Object.keys(categoryData).length > 0) {
-                barChart = new Chart(barCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: Object.keys(categoryData),
-                        datasets: [{
-                            label: 'Amount (₹)',
-                            data: Object.values(categoryData),
-                            backgroundColor: '#667eea',
-                            borderColor: '#5a6fd8',
-                            borderWidth: 1,
-                            borderRadius: 5
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            title: {
-                                display: true,
-                                text: 'Category-wise Expenses'
-                            }
-                        },
-                        scales: {
-                            y: { beginAtZero: true }
-                        }
-                    }
-                });
-            }
-
-            const doughnutCtx = document.getElementById('doughnutChart');
             if (doughnutChart) doughnutChart.destroy();
-            
-            if (doughnutCtx) {
-                doughnutChart = new Chart(doughnutCtx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Available', 'Spent'],
-                        datasets: [{
-                            data: [savings, expTotal],
-                            backgroundColor: ['#4CAF50', '#f44336'],
-                            borderWidth: 3,
-                            borderColor: '#fff'
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        cutout: '60%',
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    padding: 15,
-                                    font: { size: 12 }
-                                }
-                            },
-                            title: {
-                                display: true,
-                                text: 'Financial Health'
-                            }
-                        }
+
+            // Pie Chart
+            pieChart = new Chart(document.getElementById('pieChart'), {
+                type: 'pie',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        data: amounts,
+                        backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#C9CBCF', '#E7E9ED'],
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
                     }
-                });
-            }
+                }
+            });
+
+            // Bar Chart
+            barChart = new Chart(document.getElementById('barChart'), {
+                type: 'bar',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: 'Expenses by Category',
+                        data: amounts,
+                        backgroundColor: '#667eea',
+                        borderColor: '#764ba2',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: { beginAtZero: true }
+                    }
+                }
+            });
+
+            // Doughnut Chart
+            doughnutChart = new Chart(document.getElementById('doughnutChart'), {
+                type: 'doughnut',
+                data: {
+                    labels: ['Salary', 'Expenses', 'Savings'],
+                    datasets: [{
+                        data: [
+                            monthData.salary || 0,
+                            monthData.expenses.reduce((sum, exp) => sum + exp.amount, 0),
+                            monthData.savings || 0
+                        ],
+                        backgroundColor: ['#4CAF50', '#f44336', '#2196F3']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    }
+                }
+            });
         }
-        
+
+        // Initialize app on load
         window.onload = async () => {
-            await checkAutoLogin();
+            const savedUser = localStorage.getItem('currentUser');
+            if (savedUser) {
+                const user = await expenseDB.getUser(savedUser);
+                if (user) {
+                    currentUser = savedUser;
+                    document.getElementById('loginScreen').style.display = 'none';
+                    document.getElementById('mainApp').classList.add('show');
+                    document.getElementById('currentUser').textContent = savedUser;
+                    initializeDateSelectors();
+                    updateDisplay();
+                }
+            }
+            await initDB();
         };
     </script>
 </body>
